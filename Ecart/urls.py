@@ -24,7 +24,7 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('',include('EcartProducts.urls')),
-    # path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
     # path('admin/defender/', include('defender.urls')),
     path('api/', include('api.urls')),
     path('sales/', include('sales.urls')),
