@@ -1,0 +1,238 @@
+{% extends 'root.html' %} {% load static %} {% block content %}
+
+<main class="container1 text-green-400 bg-gray-900">
+  <h1 class="heading1">
+    <ion-icon name="cart-outline"></ion-icon> Shopping Cart
+  </h1>
+
+  <div class="item-flex">
+    <!--
+       - checkout section
+      -->
+    <section class="checkout text-green-400 bg-gray-900">
+      <h2 class="section-heading">Payment Details</h2>
+
+      <div class="payment-form">
+        <div class="payment-method">
+          <button class="method selected">
+            <ion-icon name="card" class="card"></ion-icon>
+
+            <span>Paytm</span>
+
+            <ion-icon class="checkmark fill" name="checkmark-circle"></ion-icon>
+          </button>
+
+          <!-- <button class="method method2" >
+                <ion-icon name="logo-paypal" class="paypal"></ion-icon>
+
+                <span>PayPal</span>
+
+                <ion-icon
+                  class="checkmark" id = 'checkmark'
+                  name="checkmark-circle"
+                ></ion-icon>
+              </button> -->
+        </div>
+
+        <form action="#" id="payment-form">
+          <div class="cardholder-name">
+            <label for="cardholder-name" class="label-default" 
+              >Address 1</label
+            >
+            <input
+              type="text"
+              name="cardholder-name"
+              id="cardholder-name"
+              class="input-default"
+              value = '{{user.customer.address1}}'
+            readonly
+            />
+            <label for="cardholder-name" class="label-default" 
+              >Address 2</label
+            >
+            <input
+              type="text"
+              name="cardholder-name"
+              id="cardholder-name"
+              class="input-default"
+              value = '{{user.customer.address2}}'
+            readonly
+            />
+            <label for="cardholder-name" class="label-default" 
+              >Pinocde</label
+            >
+            <input
+              type="text"
+              name="cardholder-name"
+              id="cardholder-name"
+              class="input-default"
+              value = '{{user.customer.pincode}}'
+            readonly
+            />
+            <label for="cardholder-name" class="label-default" 
+              >City</label
+            >
+            <input
+              type="text"
+              name="cardholder-name"
+              id="cardholder-name"
+              class="input-default"
+              value = '{{user.customer.city}}'
+            readonly
+            />
+            
+          </div>
+
+          <div class="input-flex">
+            <div class="expire-date">
+              <label for="expire-date" class="label-default"
+                >State</label
+              >
+
+              <div class="input-flex">
+                <input
+                  type="text"
+                  value = '{{user.customer.state}}'
+                  readonly
+                />
+              </div>
+            </div>
+
+            <div class="cvv">
+              <label for="cvv" class="label-default">Country</label>
+              <input type="number" name="cvv" placeholder="{{user.customer.country}}" id="cvv" class="input-default"  readonly />
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <!-- <button class="btn btn-primary mt-1">
+        <b>Buy</b> ₹ <span id="payAmount">{{order.get_cart_total}}</span>
+      </button> -->
+      <a href = "/profile/">
+        <button class="btn btn-primary m-2 mt-1">
+          <b>Change Address</b></span>
+        </button>
+      </a>
+      <a href = "/pay/">
+        <button class="btn btn-primary mt-1">
+          <b>Pay</b> ₹ <span id="payAmount">{{order.get_cart_total}}</span>
+        </button>
+      </a>
+      <!-- <button class="btn btn-primary mt-1">
+        <b>COD</b> ₹ <span id="payAmount">{{order.get_cart_total}}</span>
+      </button> -->
+    </section>
+
+    <!--
+        - cart section
+      -->
+    <section class="cart">
+      <div class="cart-item-box">
+        <h2 class="section-heading">Order Summery</h2>
+
+        <div class="product-card">
+          {% for Items in Items %}
+          <div class="card">
+            <div class="img-box">
+              <img
+                src="{{Items.product.image.url}}"
+                alt="{{Items.product.name}}"
+                width="80px"
+                class="product-img"
+              />
+            </div>
+
+            <div class="detail">
+            
+              <h4 class="product-name">{{Items.product.name}}</h4>
+             
+              <div class="wrapper">
+                <div class="product-qty">
+                  <button
+                    id="decrement"
+                    class="update-cart"
+                    data-product="{{Items.product.id}}"
+                    data-action="remove"
+                  >
+                    <ion-icon name="remove-outline"></ion-icon>
+                  </button>
+
+                  <span id="quantity">{{Items.quantity}}</span>
+
+                  <button
+                    id="increment"
+                    class="update-cart"
+                    data-product="{{Items.product.id}}"
+                    data-action="add"
+                  >
+                    <ion-icon name="add-outline"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="price">
+                  $ <span id="price">{{Items.product.price}}</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              class="product-close-btn update-cart"
+              data-product="{{Items.product.id}}"
+              data-action="delete"
+            >
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+    
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <div class="discount-token">
+          
+          <label for="discount-token" class="label-default"
+            >Gift card/Discount code</label
+          >
+         
+
+          <div class="wrapper-flex">
+            <input
+              type="text"
+              name="discount-token"
+              id="discount-token"
+              class="input-default"
+            />
+           
+            {% for itr in orderItemr %}
+            <button class="btn btn-outline">{{itr.product.name}}</button>
+             {% endfor %}
+          </div>
+        </div>
+
+        <div class="amount">
+          <div class="subtotal">
+            <span>Subtotal</span>
+            <span>$ <span id="subtotal">{{order.get_cart_total}}</span></span>
+          </div>
+
+          <div class="tax">
+            <span>Tax</span> <span>$ <span id="tax">0.00</span></span>
+          </div>
+
+          <div class="shipping">
+            <span>Shipping</span>
+            <span>$ <span id="shipping">0.00</span></span>
+          </div>
+
+          <div class="total">
+            <span>Total</span> <span>$ <span id="total">{{order.get_cart_total}}</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+{% endblock content%}

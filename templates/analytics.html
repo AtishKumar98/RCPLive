@@ -1,0 +1,17 @@
+{% extends 'root.html' %} {% load static %} {% block content %}
+
+
+
+<h3>
+    <div class = "text-light">
+       <center> <h1 class="font-medium leading-tight text-3xl mt-0 mb-2 text-white-600">Product Prices</h1>
+
+        <br>
+        
+        {% if chart %}
+        <img src = "data:image/png;base64, {{chart | safe}}">
+        {% endif %}
+    </div> 
+</h3    >
+    </center>
+{% endblock content%}

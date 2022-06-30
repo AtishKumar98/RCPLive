@@ -1,0 +1,65 @@
+{% extends 'root.html' %} {% load static %} {% block content %}
+<div class="container">
+
+    <h1 class="font-medium leading-tight text-7xl mt-0 mb-2 text-blue-600">Order</h1>
+
+    <h3 class="font-medium leading-tight text-3xl mt-0 mb-2 text-blue-600">On the way</h3>
+
+    {% for itr in orderItemr %}
+    <div class="flex justify-center mt-5">
+        <div class="flex flex-col md:flex-row md:max-w-xxl rounded-lg bg-white shadow-lg">
+            <a href="#!">
+                <img class="rounded-t-lg mt-2" src="{{itr.product.image.url}}" alt="" />
+            </a>
+            <div class="p-6">
+                <h4 class="text-gray-900 text-xl font-medium mb-2">{{itr.product.name}}</h4>
+                <h6 class="text-gray-900 text-xxl font-medium mb-2">Price: {{itr.product.price}}</h6>
+                <h6 class="text-gray-900 text-xxl font-medium mb-2">Category: {{itr.product.category}}</h6>
+                <h6 class="text-gray-900 text-xxl font-medium mb-2">Likes: {{itr.product.num_likes}}</h6>
+                <h6 class="text-gray-900 text-xxl font-medium mb-2">Transaction id: {{itr.transaction_id}}</h6>
+                <h6 class="text-gray-900 text-xxl font-medium mb-2">Description:<br> {{itr.product.description}}</h6>
+                <button type="button"
+                    class=" inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-500 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+
+<div class=container>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- <div class='maincontainer mx-5 mt-5'> -->
+
+<br>
+<!--
+    This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+
+  
+  {% endblock content%}

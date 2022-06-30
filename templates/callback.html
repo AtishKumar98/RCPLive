@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <head>
+        <title>Callback</title>
+    </head>
+    <body class = 'bg-dark text-light'>
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                <i class='bx bxs-check-circle' ></i> Thank you Successfully Ordered.
+            </div>
+            </div>
+            <hr>
+          <div class ='container card bg-dark text-light'>
+          <div class ='card-body'>
+              <h4>Callback Messsage: </h2>  
+                {{ CHECKSUMHASH }}                        <br>
+                <h5> Checksum Verification: {{ message }} </h3>     <br>
+                    MID:        {{ MID }}                                  <br>
+                    TXNID:      {{ TXNID }}                              <br>
+                    ORDERID:    {{ ORDERID }}                          <br>
+                    BANKTXNID:  {{ BANKTXNID }}                      <br>
+                    TXNAMOUNT:  {{ TXNAMOUNT }}                      <br>
+                    CURRENCY:   {{ CURRENCY }}  
+                    <br>                      
+                    <hr>
+                    <br>
+                    <h6> 
+                    STATUS:         {{ STATUS }} </h3>                      <br>
+                    RESPCODE:       {{ RESPCODE }}                        <br>
+                    RESPMSG:        {{ RESPMSG }}                          <br>
+                    TXNDATE:        {{ TXNDATE }}                          <br>
+                    GATEWAYNAME:    {{ GATEWAYNAME }}                  <br>
+                    BANKNAME:       {{ BANKNAME }}                        <br>
+                    BIN_NAME:       {{ BIN_NAME }}                        <br>
+                    PAYMENTMODE:    {{ PAYMENTMODE }}                  <br>
+                    CHECKSUMHASH:   {{ CHECKSUMHASH }}
+                    <div class ='container card bg-dark text-light'>
+                        <div class ='card-body'>
+        <h4>
+            Your Order has been Succesfully Place for Order {{ ORDERID }} 
+            <br>
+            For Amount: {{ CURRENCY }}-{{ TXNAMOUNT }} 
+            <br>
+            Date : {{ TXNDATE }}
+            <br>
+            Bank: {{ BANKNAME }}
+            <br>
+
+            
+            {{ RESPMSG }}
+          
+        </h4>
+        </div>
+        <a class="btn btn-outline-success mt-5" href="/" role="button">Home</a>
+    </div>
+        </body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        </html>
+        
+        </html>

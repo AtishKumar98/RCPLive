@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#27AAE1;stroke:#FBB040;stroke-width:9;stroke-miterlimit:10;}
+	.st1{fill:#F7941D;stroke:url(#SVGID_1_);stroke-width:9;stroke-miterlimit:10;}
+	.st2{fill:#27AAE1;stroke:url(#SVGID_2_);stroke-width:8;stroke-miterlimit:10;}
+	.st3{fill:#F15A29;stroke:url(#SVGID_3_);stroke-width:7;stroke-miterlimit:10;}
+	.st4{fill:#F15A29;stroke:url(#SVGID_4_);stroke-width:7;stroke-miterlimit:10;}
+	.st5{fill:none;}
+	.st6{fill:#00AEEF;stroke:#808285;stroke-width:4;stroke-miterlimit:10;}
+	.st7{font-family:'AgencyFB-Reg';}
+	.st8{font-size:40px;}
+</style>
+<g>
+	<polygon class="st0" points="348.41,469.18 179.56,381.67 339.77,279.19 	"/>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="172.9005" y1="352.3465" x2="391.7138" y2="352.3465">
+		<stop  offset="0" style="stop-color:#FFF33B"/>
+		<stop  offset="0.0595" style="stop-color:#FFE029"/>
+		<stop  offset="0.1303" style="stop-color:#FFD217"/>
+		<stop  offset="0.2032" style="stop-color:#FEC90E"/>
+		<stop  offset="0.2809" style="stop-color:#FDC70C"/>
+		<stop  offset="0.6685" style="stop-color:#F3903F"/>
+		<stop  offset="0.8876" style="stop-color:#ED683C"/>
+		<stop  offset="1" style="stop-color:#E93E3A"/>
+	</linearGradient>
+	<polygon class="st1" points="384.25,445.91 180.99,431.6 295.02,262.72 	"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="234.8052" y1="360.7769" x2="343.4825" y2="360.7769">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<polygon class="st2" points="336.66,404.36 241.83,401.91 291.36,321.02 	"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="259.7868" y1="376.3401" x2="319.176" y2="376.3401">
+		<stop  offset="0" style="stop-color:#FFF33B"/>
+		<stop  offset="0.0595" style="stop-color:#FFE029"/>
+		<stop  offset="0.1303" style="stop-color:#FFD217"/>
+		<stop  offset="0.2032" style="stop-color:#FEC90E"/>
+		<stop  offset="0.2809" style="stop-color:#FDC70C"/>
+		<stop  offset="0.6685" style="stop-color:#F3903F"/>
+		<stop  offset="0.8876" style="stop-color:#ED683C"/>
+		<stop  offset="1" style="stop-color:#E93E3A"/>
+	</linearGradient>
+	<polygon class="st3" points="289.48,351.27 268.71,361.28 263.57,383.76 277.95,401.79 301.01,401.79 315.39,383.76 310.26,361.28 
+			"/>
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="281.4059" y1="375.7626" x2="300.5005" y2="375.7626">
+		<stop  offset="0" style="stop-color:#FFF33B"/>
+		<stop  offset="0.0595" style="stop-color:#FFE029"/>
+		<stop  offset="0.1303" style="stop-color:#FFD217"/>
+		<stop  offset="0.2032" style="stop-color:#FEC90E"/>
+		<stop  offset="0.2809" style="stop-color:#FDC70C"/>
+		<stop  offset="0.6685" style="stop-color:#F3903F"/>
+		<stop  offset="0.8876" style="stop-color:#ED683C"/>
+		<stop  offset="1" style="stop-color:#E93E3A"/>
+	</linearGradient>
+	<ellipse class="st4" cx="290.95" cy="375.76" rx="6.05" ry="5.38"/>
+	<rect x="189.52" y="399.42" class="st5" width="190.76" height="53.89"/>
+	<text transform="matrix(1 0 0 1 259.6714 441.6469)" class="st6 st7 st8">RCP</text>
+</g>
+</svg>

@@ -1,0 +1,283 @@
+{% extends 'root.html' %} {% load static %} {% block content %}
+
+<style>
+  .container1 {
+    max-width: 1440px;
+    min-height: 100vh;
+    margin-left: 170px;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+<div class="container1">
+  <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-white-600">
+    Dashboard
+  </h1>
+
+  <div class="flex flex-col">
+    <!-- <div class="overflow-x-auto sm:-mx-6 lg:-mx-8"> -->
+      <div class="py-2 inline-block min-w-full sm:px-8 lg:px-9">
+        <div class="overflow-hidden">
+          {% if chart %}
+          <img src="data:image/png;base64, {{chart | safe}}" />
+          {% endif %}
+          <br />
+          <br />
+          <br />
+          <table class="min-w-full">
+            <div class="py-3 px-5 bg-gray-60 mt-2">Products</div>
+            <thead class="border-b">
+              <tr>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  ID
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Product
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Price
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Category
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for prods in prod %}
+              <tr class="bg-white border-b">
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{prods.id}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{prods.name}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  ₹ {{prods.price}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{prods.category}}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="py-3 px-5 bg-gray-60 mt-2">Users</div>
+          <table class="min-w-full">
+            <thead class="border-b">
+              <tr>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  ID
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  User
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Customer Name
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Email
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                 Staff
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  SuperUser
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for cust in name %}
+              <tr class="bg-white border-b">
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{cust.id}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{cust.user}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{cust.firstname}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{cust.email}}
+                </td>
+
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                {% if cust.user.is_staff %}
+                <i class='bx bx-check-double' ></i>
+                {% else %}
+                <i class='bx bxs-x-circle' ></i>
+
+                {% endif %}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                {% if cust.user.is_superuser %}
+                <i class='bx bx-check-double' ></i>
+                {% else %}
+                <i class='bx bxs-x-circle' ></i>
+                {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <div class="py-3 px-5 bg-gray-60 mt-2">Orders</div>
+          
+          <table class="min-w-full mb-5">
+            <thead class="border-b">
+              <tr>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  ID
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Product
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Customer Name
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  User
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Status
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Date ordered
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-white-900 px-6 py-4 text-left"
+                >
+                  Transcation Id
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ords in ord %}
+              <tr class="bg-white border-b">
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ords.id}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{ords.product.name}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{ords.order.customer.firstname}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{ords.order.customer.user}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{ords.status}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{ords.order.date_ordered}}
+                </td>
+                <td
+                  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                >
+                  {{ords.transaction_id}}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Required chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- Chart bar -->
+      
+
+        <!-- Required chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- Chart line -->
+   
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content%}

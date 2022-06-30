@@ -1,0 +1,65 @@
+{% extends 'root.html' %} {% load static %} {% block content %}
+<!-- This example requires Tailwind CSS v2.0+ -->
+
+<section class="home-section bg-gray-900">
+  <!-- <div class="text-gray-re">Dashboard</div> -->
+  <section class="text-green-400 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4">
+        {% for prods in prod %}
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            
+            <img alt="ecommerce" class="object-cover object-center w-full h-full block max-w-xs hover:scale-110 transition duration-300 ease-in-out" 
+            src="{{prods.image.url}}" />
+            
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              Product :{{prods.name}}
+            </h3>
+            <h2 class="text-white title-font text-lg font-medium">
+              {{prods.name}}
+            </h2>
+            <p class="mt-1">$ {{prods.price}}</p>
+            
+            <button
+              class="inline-flex items-center bg-red-700 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded text-white mt-4 md:mt-1 m-2 update-cart"
+              data-action="add" data-product="{{prods.id}}" data-user="{{request.user}}" data-name="{{prods.name}}">
+              Add to cart <i class="bx bxs-cart-add m-1"></i>
+            </button>
+
+
+            <form action = '{% url "like_products" %}' method ='POST'>
+              {% csrf_token %}
+              
+              <input type = 'hidden' name='prod_id' value ={{prods.id}}>
+              {% if user not in prods.liked.all %}
+              <button type ='submit'
+              class="inline-flex items-center bg-red-700 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded text-white mt-4 md:mt-1 m-2">
+              Like <i class='bx bx-heart m-1'></i>
+            </button>
+              {% else %}
+              <button type ='submit'
+              class="inline-flex items-center bg-green-700 border-0 py-1 px-3 focus:outline-none hover:bg-red-700 rounded text-white mt-4 md:mt-1 m-2"> 
+              Unlike  <i class='bx bxs-heart m-1' ></i>
+            </button>
+            {% endif %}
+            
+            <strong>{{prods.liked.all.count}}</strong>
+            
+            
+          </form>
+          </div>
+        </div>
+ 
+
+
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</section>
+</h1>
+
+{% endblock content%}

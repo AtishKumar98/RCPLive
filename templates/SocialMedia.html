@@ -1,0 +1,151 @@
+{% extends 'root.html' %} 
+{% load static %} 
+{% block content %} 
+
+
+<style>
+
+    .container1 {
+        max-width: 100%;
+        min-height: 100vh;
+        margin-left:3rem;
+        margin-right:1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .puppet{
+      width:100%
+    }
+    </style>
+<div class="container1">
+  <div class="container1">
+    <!--================= LABEL TEXT================= -->
+    <div class="flex justify-center">
+      <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="mb-3 xl:w-98 mt-5">
+          <label
+            for="exampleFormControlInput2"
+            class="form-label inline-block mb-2 text-white text-xl">Image Name</label>
+          <input type="text" name ="img_name" class="form-control block w-full px-3 py-1  text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Image Name"/>
+          <input type="hidden" name="u_profile" value="{{user.profile.image.url}}">
+          <label for="formFileLg"  class="form-label inline-block mb-2 text-white">Upload Image</label
+        >
+        <input name="img" class="form-control block w-full px-2 py-1.5 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileLg" type="file"/>
+       
+        <button type="submit" name="upload" class="w-full inline-block px-6 py-2 border-2 border-blue-600 bg-green-500 text-white font-medium text-xs leading-normal uppercase rounded hover:bg-green-500 hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out mt-2">
+            Submit Photo
+            </button>
+        </form>
+        </div>
+      </div>
+    </div>
+    <!--================= LABEL TEXT================= -->
+
+    <!--================= UPLOAD FILE================= -->
+
+    <div class="flex justify-center">
+      <div class="mb-3 w-96">
+        
+      </div>
+    </div>
+   
+    <!--================= Image Feed================= -->
+<!-- 
+    <section class="text-gray-400 bg-gray-900 body-font">
+      <div class="container px-5 py-24 mx-auto flex flex-wrap">
+        <div class="flex w-full mb-20 flex-wrap">
+          <h1
+            class="sm:text-3xl text-2xl font-medium title-font text-white lg:w-1/3 lg:mb-0 mb-4"
+          >
+           Image Uploader
+          </h1>
+          <p class="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
+            Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
+            gentrify, subway tile poke farm-to-table. Franzen you probably
+            haven't heard of them man bun deep jianbing selfies heirloom.
+          </p>
+        </div>
+        <div class="flex flex-wrap md:-m-2 -m-1">
+            {% for image in images %}
+          <div class="flex flex-wrap w-1/2">
+              <div class="md:p-2 p-1 w-1/2">
+                  <img
+                  alt="gallery"
+                  class="w-full object-cover h-full object-center block"
+                  src="{{image.image.url}}"
+                  />
+                  <div>
+                    <a href="/profile/{{image.user}}/"><img src="{{image.user_profile}}" style="width: 40px;position:relative;bottom: 50px;left:10px;border-radius:50%;" alt=""></a>
+                          
+                          <span class="font text-white" style="position:relative;bottom: 50px;left:20px;">{{image.user}}</span>
+            
+                          <a href="{{image.image.url}}" download class="btn btn-light font btn-sm" style="position: relative;left:200px;bottom:50px;"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+                    </div> 
+                </div>
+                
+                {%endfor%}
+                
+                
+               
+        </div>
+      </div>
+    </section> -->
+
+<!-- 
+
+    <section class="overflow-hidden text-gray-700 ">
+        <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
+          <div class="flex flex-wrap -m-1 md:-m-2">
+            {% for image in images %}
+            <div class="flex flex-wrap w-1/3">
+              <div class="w-full p-1 md:p-2">
+                <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+                  src="{{image.image.url}}">
+              </div>
+              <div>
+                <a href="/profile/{{image.user}}/"><img src="{{image.user_profile}}" style="width: 40px;position:relative;bottom: 50px;left:10px;border-radius:50%;" alt=""></a>
+                      
+                      <span class="font text-white" style="position:relative;bottom: 50px;left:20px;">{{image.user}}</span>
+        
+                      <a href="{{image.image.url}}" download class="btn btn-light font btn-sm" style="position: relative;left:200px;bottom:50px;"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+                </div> 
+            </div>
+            
+            {%endfor%}
+           
+            
+          </div>
+        </div>
+      </section> -->
+
+      <section class="overflow-hidden text-gray-700 ">
+        <div class="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
+          <div class="flex flex-wrap -m-1 md:-m-2">
+            {% for image in images %}
+            <a href="/profile/{{image.user}}">
+            <div class="flex flex-wrap w-1/3">
+              <div class="w-full p-1 md:p-2">
+                <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+                  src="{{image.image.url}}">
+
+              </div>
+              <div class>
+                <a href="/profile/{{image.user}}"><img src="{{image.user_profile}}" style="width: 20px;position:relative;bottom: 55px;left:20px;border-radius:30%;" alt=""></a>
+                      
+                      <span class="font text-white" style="position:relative;bottom: 150px;left:160px;">{{image.user}}</span>
+        
+                      <a href="{{image.image.url}}" download class="btn btn-light font btn-sm" style="position: relative;left:200px;bottom:20px;"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+                
+                    </div> 
+                
+            </div>
+            
+            {%endfor%}
+           
+            
+          </div>
+        </div>
+      </section>
+{% endblock content%}
