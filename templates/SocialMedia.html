@@ -16,6 +16,20 @@
     .puppet{
       width:100%
     }
+    .form-input img {
+  width:100%;
+  display:none;
+  margin-bottom:30px;
+}
+
+.preview{
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height:auto;
+}
     </style>
 <div class="container1">
   <div class="container1">
@@ -28,11 +42,19 @@
           <label
             for="exampleFormControlInput2"
             class="form-label inline-block mb-2 text-white text-xl">Image Name</label>
-          <input type="text" name ="img_name" class="form-control block w-full px-3 py-1  text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput2" placeholder="Image Name"/>
+          <input type="text" name ="img_name" 
+          class="form-control block w-full px-3 py-1  text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+          id="exampleFormControlInput2" placeholder="Image Name"/>
           <input type="hidden" name="u_profile" value="{{user.profile.image.url}}">
           <label for="formFileLg"  class="form-label inline-block mb-2 text-white">Upload Image</label
         >
-        <input name="img" class="form-control block w-full px-2 py-1.5 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileLg" type="file"/>
+        <div class="preview">
+
+          <img id="file-ip-1-preview">
+        </div>
+        <input name="img" 
+        class="form-control block w-full px-2 py-1.5 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+        id="formFileLg" type="file"  onchange="showPreview(event);"/>
        
         <button type="submit" name="upload" class="w-full inline-block px-6 py-2 border-2 border-blue-600 bg-green-500 text-white font-medium text-xs leading-normal uppercase rounded hover:bg-green-500 hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out mt-2">
             Submit Photo
@@ -148,4 +170,14 @@
           </div>
         </div>
       </section>
+      <script>
+        function showPreview(event){
+    if(event.target.files.length > 0){
+      var src = URL.createObjectURL(event.target.files[0]);
+      var preview = document.getElementById("file-ip-1-preview");
+      preview.src = src;
+      preview.style.display = "block";
+    }
+  }
+  </script>
 {% endblock content%}

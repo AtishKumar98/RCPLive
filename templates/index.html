@@ -1,64 +1,515 @@
 {% extends 'root.html' %} {% load static %} {% block content %}
 <!-- This example requires Tailwind CSS v2.0+ -->
+<style>
 
-<section class="home-section bg-gray-900">
+.prd_card {
+  position: relative;
+  width: 95%;
+  height:100%;
+  background: #191919;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px;
+  margin-top: 10px;
+ 
+}
+.grid_prod{
+  display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            padding: auto;
+            margin: auto;
+}
+.prd_card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: rgb(21, 68, 131);
+  transform: skewY(345deg);
+  transition: 0.5s;
+}
+
+.prd_card:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+
+.prd_card::after {
+  content: "CORSAIR";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: 6em;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.prd_card .imgBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1;
+}
+
+/*
+.prd_card .imgBox img {
+    max-width: 100%;
+
+    transition: .5s;
+}
+
+.prd_card:hover .imgBox img {
+    max-width: 50%;
+
+}
+*/
+.prd_card .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  
+}
+
+.prd_card .contentBox h3 {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.prd_card .contentBox .price {
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.prd_card .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  padding: 10px 30px;
+  margin-top: 15px;
+  color: white;
+  text-decoration: none;
+  background: rgb(21, 68, 131);
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+.prd_card:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}
+
+.mouse {
+  height: 300px;
+  width: auto;
+}
+.prod_image{
+  height: 100%;
+  border-radius: 15px;
+  padding: 5%;
+  margin: 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) );
+}
+.prod_image img {
+height: auto;
+width: 100%;
+}
+
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+  .cat-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* margin-left: 10%; */
+}
+  .categories{
+    height:80px;
+    overflow: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    
+    background-image: linear-gradient(-180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) );
+    margin-bottom: 2vh;
+    display: flex;
+    flex-direction: row;
+    /* margin: auto; */
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+.active{
+  color: rgb(0, 0, 0);
+}
+.categories img{
+  height: 70px;
+  padding-top: 10px;
+  width: auto;
+  margin-right: 20px;
+}
+.cat-title
+{
+  font-size: small;
+  margin: 10px;
+  color: white;
+}
+
+.advertisement{
+  /* background-color: antiquewhite; */
+ 
+  height: 40vh;
+  border-radius: 15px;
+  display: flex;
+flex-direction: row;
+  width:100%;
+  margin-bottom: 1vh;
+}
+.sub_advertisment_1{
+  /* background-color: rgb(82, 163, 163); */
+  /* background-image: linear-gradient(180deg,rgba(16, 16, 17, 0.8),rgba(77, 78, 78, 0.918)),url('https://cdn.pixabay.com/photo/2020/04/04/15/04/click-5002627_960_720.jpg'); */
+  height:100%;
+  width: 50%;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.sub_advertisment_2{
+  /* background-color: rgb(35, 128, 128); */
+  /* background-image: linear-gradient(180deg,rgba(16, 16, 17, 0.8),rgba(77, 78, 78, 0.918)),url('https://cdn.pixabay.com/photo/2020/09/23/20/27/headphones-5596987_960_720.jpg'); */
+  height:100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.sub_container_1{
+    /* background-color: aquamarine; */
+    height:100%;
+    padding: 5px;
+    width: 100%;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    overflow: hidden;
+    background-image: linear-gradient(180deg,rgba(16, 16, 17, 0.6),rgba(77, 78, 78, 0.6)),
+    url('https://cdn.pixabay.com/photo/2020/04/04/15/04/click-5002627_960_720.jpg');
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: ease-in-out 0.4s;
+}
+.sub_container_2{
+    /* background-color: aquamarine; */
+    height:100%;
+    padding: 5px;
+    width: 100%;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    overflow: hidden;
+    background-image: linear-gradient(180deg,rgba(16, 16, 17, 0.6),rgba(77, 78, 78, 0.6)),
+    url('https://cdn.pixabay.com/photo/2020/09/23/20/28/headphones-5596990_960_720.jpg');
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: ease-in-out 0.4s;
+}
+
+.sub_container_1:hover{
+    transition: ease-in-out .7s;
+    box-shadow:none;box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.sub_container_2:hover{
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    transition: ease-in-out 0.7s;
+}
+
+
+.img-container{
+    /* background-color: cadetblue; */
+    width: 30%;
+    height: 100%;
+}
+.img-container img{
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 5px;
+   border-top-left-radius: 5px;
+    object-fit: cover;
+    transition: ease-in-out 0.7s;
+}
+
+
+
+.card-info{
+    /* background-color: brown; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.card-info-title{
+    height: 70%;
+    display: flex;
+    color: #e1e4e1;
+    flex-direction:row;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    font-family: 'Fira Sans', sans-serif;
+    align-items: center;
+    font-size: 50px;
+    border-bottom-right-radius: 5px;
+    width: 100%;
+}
+.card-info-content{
+    height: 30%;
+    border-bottom-right-radius: 5px; 
+    /* background-color: cadetblue; */
+    width: 100%;
+}
+
+.card-info p{
+    font-size: 24px;
+    font-family: 'Fira Sans', sans-serif;
+ 
+}
+.ad-btn{
+  background-color: aliceblue;
+  color: black;
+  width:100px;
+  border-radius: 10px;
+  height: 60px;
+  font-family: 'Fira Sans', sans-serif;
+  transition: ease-in-out 0.2s;
+}
+
+.ad-btn:hover{
+  background-color: black;
+  color: aliceblue;
+  transition: ease-in-out 0.2s;
+}
+
+</style>
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+<section class="home-section mt-4 bg-gray-900">
   <!-- <div class="text-gray-re">Dashboard</div> -->
   <section class="text-green-400 bg-gray-900 body-font">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-wrap -m-4">
-        {% for prods in prod %}
-        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-          <a class="block relative h-48 rounded overflow-hidden">
+    <!-- <div class="container px-2 mx-auto"> -->
+      <div class="advertisement">
+        <div class="sub_advertisment_1">
+          <div class="sub_container_1">
+            <!-- <div class="img-container">
+                <img src="https://images.pexels.com/photos/159490/yale-university-landscape-universities-schools-159490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+            </div> -->
+            <div class="card-info">
+                <div class="card-info-title">70% Discount</div>
+                <div class="card-info-content">
+                    <p>
+                       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta at eveniet sed voluptatum minima.
+                    </p>
+                </div>
+                <button class="ad-btn">
+                  Buy Now
+                </button>
+            </div>
+        </div>
+        </div>
+        <div class="sub_advertisment_2">
+          <div class="sub_container_2">
             
-            <img alt="ecommerce" class="object-cover object-center w-full h-full block max-w-xs hover:scale-110 transition duration-300 ease-in-out" 
-            src="{{prods.image.url}}" />
+            <div class="card-info">
+                <div class="card-info-title">HIGH QUALITY PRODUCTS</div>
+                <br>
+                <div class="card-info-content">
+
+                    <p>
+                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis assumenda error omnis illum aspernatur.
+                    </p>
+                </div>
+                <button class="ad-btn">
+                  Buy Now
+                </button>
+            </div>
+        </div>
+        </div>
+      </div> 
+      <div class="cat-container">
+      <div class="categories">
+        <div class="category-content">
+          <div class="cat-img">
+          </div>
+          <div class="cat-title active">
+            <a href="{% url 'home' %}">
+              All
+            </a>
+          </div>
+        </div>
+        {% for cat in cc %}
+       
+        <div class="category-content">
+          <div class="cat-img">
+          </div>
+          <div class="cat-title">
+            <a href="{% url 'home' %}?category={{cat.name}}" {% if '/?category={{cat.name}}' == request.get_full_path  %} class="active" {% endif %}>
+              {{cat.name }}
+             
+            </a>
+          </div>
+        </div>
+        
+        {% endfor %}
+      </div>
+      </div> 
+    
+       
+
+          <!-- {% for prods in prod %}
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+              <a href ='{% url "product_view" prods.id %}' class="block relative h-48 rounded overflow-hidden">
+                
+                <img alt="ecommerce" class="object-cover object-center w-full h-full block max-w-xs hover:scale-110 transition duration-300 ease-in-out" 
+                src="{{prods.image.url}}" />
             
           </a>
           <div class="mt-4">
             <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-              Product :{{prods.name}}
+              Category:{{prods.category}}
             </h3>
             <h2 class="text-white title-font text-lg font-medium">
               {{prods.name}}
             </h2>
-            <p class="mt-1">$ {{prods.price}}</p>
+            <p class="mt-1">₹ {{prods.price}}</p>
             
             <button
-              class="inline-flex items-center bg-red-700 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded text-white mt-4 md:mt-1 m-2 update-cart"
-              data-action="add" data-product="{{prods.id}}" data-user="{{request.user}}" data-name="{{prods.name}}">
-              Add to cart <i class="bx bxs-cart-add m-1"></i>
-            </button>
-
-
-            <form action = '{% url "like_products" %}' method ='POST'>
-              {% csrf_token %}
-              
-              <input type = 'hidden' name='prod_id' value ={{prods.id}}>
-              {% if user not in prods.liked.all %}
-              <button type ='submit'
-              class="inline-flex items-center bg-red-700 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded text-white mt-4 md:mt-1 m-2">
-              Like <i class='bx bx-heart m-1'></i>
-            </button>
-              {% else %}
-              <button type ='submit'
-              class="inline-flex items-center bg-green-700 border-0 py-1 px-3 focus:outline-none hover:bg-red-700 rounded text-white mt-4 md:mt-1 m-2"> 
-              Unlike  <i class='bx bxs-heart m-1' ></i>
-            </button>
+            class="inline-flex items-center bg-red-700 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded text-white mt-4 md:mt-1 m-2 update-cart"
+            data-action="add" data-product="{{prods.id}}" data-user="{{request.user}}" data-name="{{prods.name}}">
+            Add to cart <i class="bx bxs-cart-add m-1"></i>
+          </button>
+          
+          
+          <form action = '{% url "like_products" %}' method ='POST'>
+            {% csrf_token %}
+            
+            <input type = 'hidden' name='prod_id' value ={{prods.id}}>
+            {% if user not in prods.liked.all %}
+            <button type ='submit'
+            class="inline-flex items-center bg-red-700 border-0 py-1 px-3 focus:outline-none hover:bg-green-700 rounded text-white mt-4 md:mt-1 m-2">
+            Like <i class='bx bx-heart m-1'></i>
+          </button>
+          {% else %}
+          <button type ='submit'
+          class="inline-flex items-center bg-green-700 border-0 py-1 px-3 focus:outline-none hover:bg-red-700 rounded text-white mt-4 md:mt-1 m-2"> 
+          Unlike  <i class='bx bxs-heart m-1' ></i>
+        </button>
             {% endif %}
             
             <strong>{{prods.liked.all.count}}</strong>
             
             
           </form>
-          </div>
         </div>
- 
+      </div>
+      
+      
+      
+      {% endfor %} -->
+      
+      <div class="grid_prod">
+        
+        <!-- {% for prods in prod %}
+        <div class="prd_card">
+            <a href ='{% url "product_view" prods.id %}'>
+            
+            <div class="imgBox">
+              <img src="{{prods.image.url}}" alt="mouse corsair" class="mouse">
+            </div>
+        
+          <div class="contentBox">
+            <h3>{{prods.name}}</h3>
+            <h2 class="price">₹<small> {{prods.price}}</small></h2>
+            <button href="#" class="buy update-cart"data-action="add" data-product="{{prods.id}}" data-user="{{request.user}}" data-name="{{prods.name}}">Buy Now</button>
+          </div>
+          
+        </a>
+        </div>  
+        {% endfor %} -->
 
+        {% for prods in prod %}
+        <!-- <div class="prod_card" style =''>
+            <a href ='{% url "product_view" prods.id %}'>
+            
+            <div class="imgBox">
+              <img src="{{prods.image.url}}" alt="mouse corsair" class="mouse">
+            </div>
+        
+          <div class="contentBox">
+            <h3>{{prods.name}}</h3>
+            <h2 class="price">₹<small> {{prods.price}}</small></h2>
+            <button href="#" class="buy update-cart"data-action="add" data-product="{{prods.id}}" data-user="{{request.user}}" data-name="{{prods.name}}">Buy Now</button>
+          </div>
+          
+        </a>
+        </div> -->
 
         {% endfor %}
+
+       
+          {% for prods in prod %}
+          <div class="prod_card" style="background-image: linear-gradient(180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) );display:flex;flex-direction:column;height:95%;width:60%;margin: 8%; border-radius: 15px;">
+            <a href ='{% url "product_view" prods.id %}'>
+            <div class="prod_image" style="">
+              <img src="{{prods.image.url}}" >
+            </div>
+            <div class="btn_section" style = 'width:100%; display: flex;justify-content: space-around;align-items: center;margin-bottom: 5%;'>
+              <button class="btn_add_now" style="width:40%;background-image: linear-gradient(180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) );;border-radius: 15px;color: white; padding: 3%;">Add Now</button>
+              <button class="btn_buy_now" style="width:40%;background-image: linear-gradient(180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) );;border-radius: 15px;color: white; padding: 3%;">Buy Now</button>
+            </div>
+            </a>
+          </div>
+          {%  endfor  %}
+        
+
       </div>
+      
     </div>
-  </section>
+  </div>
+</section>
+
 </section>
 </h1>
 

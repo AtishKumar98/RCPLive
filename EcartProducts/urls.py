@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout/',views.logoutUser, name='logout'),
     path('dashboard/', views.dashboard,name='dashboard'),
     path('cart/', views.cart,name='cart'),
+    path('product_view/<str:pk>', views.product_view,name='product_view'),
     path('pay/', views.initiate_payment, name='pay'),
     path('analytics/', views.analytics, name = 'analytics'),
     path('profile/<str:user>/',views.user_profile,name="user_profile"),
@@ -25,6 +26,7 @@ urlpatterns = [
     path('getMessages/<str:room>/', views.getMessages, name='getMessages'),
     path('posts/', views.posts, name='posts'),
     path('like/', views.LikeView, name='like_products'),
+    path('prod_add/', views.product_add, name='prod_add'),
 
 
     ##Regarding ForgetPassword

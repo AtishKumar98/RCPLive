@@ -19,6 +19,8 @@ admin.site.register(Follower_count)
 # admin.site.register(Order)
 
 
+
+
 @admin.register(Product)
 class StudentAdmin(admin.ModelAdmin):
     list_display = ['name','price','category','num_likes']

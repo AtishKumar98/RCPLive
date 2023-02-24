@@ -26,7 +26,7 @@ class CustomerForm(ModelForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['name','price','category','image','description']
 
 class UpdateUserForm(forms.ModelForm):
 

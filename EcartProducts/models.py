@@ -24,11 +24,12 @@ class Category(models.Model):
 class Product(models.Model):
     name=models.CharField(max_length=255)
     price=models.IntegerField()
+    multiple_image = models.FileField(blank=True,null=True)
     image_url=models.CharField(null=True,max_length=2050, default ='' , blank=True)
     description=models.TextField(max_length=1000)
     category=models.ForeignKey(Category,on_delete=CASCADE, max_length=50,null=True)
     image=models.ImageField(null=True,blank=True)
-    liked = models.ManyToManyField(User,related_name='product' ,blank=True)
+    liked = models.ManyToManyField(User,related_name='blog' ,blank=True)
 
     def get_image(self):
         if self.image: 
@@ -263,6 +264,8 @@ class Likes(models.Model):
     values =  models.CharField(choices=LIKE_Choice, default='Like' ,max_length=100)
     def __str__(self):
         return str(self.product_likes)
+
+
 
 class Refund(models.Model):
     REASONS = (

@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path,include,re_path
 from django.conf import settings 
 from django.conf.urls.static import static
+from simple_chatbot.views import SimpleChatbot
 from django.views.static import serve
 
 urlpatterns = [
@@ -27,6 +28,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     # path('admin/defender/', include('defender.urls')),
     path('api/', include('api.urls')),
+    # path('chat-bot/', include('sili.urls')),
+    path("simple_chatbot/", SimpleChatbot.as_view()),
     path('sales/', include('sales.urls')),
 
 

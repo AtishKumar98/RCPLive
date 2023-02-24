@@ -53,7 +53,7 @@ def loginpage(request):
         else:
             messages.error(request, 'INCORRECT USERNAME OR PASSWORD! TRY AGAIN')
     
-
+#         ###############----Registration----############################## #
     form = CreateUserForm()
     if request.method == 'POST' and 'form2' in request.POST:
         form = CreateUserForm(request.POST)
@@ -72,12 +72,17 @@ def loginpage(request):
 # Create your views here.
 def index(request):
     now = datetime.datetime.now()
+    cat =request.GET.get('category')
+    if cat == None:
+        prod =Product.objects.all()
+    else:
+        prod = Product.objects.filter(category__name=cat)
+    cat = Category.objects.all()
     format = '%H:%M:%S %p'
     current_time = now.strftime(format)
     current_date = now.strftime("%d-%m-%Y")
     cust = Customer.objects.all()
-    prod = Product.objects.all()
-    cat = Category.objects.all()
+    # prod = Product.objects.all()
     context = {'cc': cat, 'name': cust, 'prod': prod,
                'time': current_time, 'day': current_date}
     return render(request, 'index.html', context)
@@ -243,8 +248,6 @@ def callback(request):
                 BANKNAME = received_data['BANKNAME'],
                 PAYMENTMODE = received_data['PAYMENTMODE'],
                 CHECKSUMHASH = received_data['CHECKSUMHASH'],
-                
-
             )
             Transaction_report.save()
             
@@ -273,18 +276,6 @@ def handlerequest(request):
             print('Order was not Succesful Because'+response_dict['RESPMSG'])
     context = {'response': response_dict}
     return render(request, 'callback.html',context)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -439,3 +430,37 @@ def order_status(request):
     orderItemr =  OrderItem.objects.filter(status = 'OnTheWay')
     context = {'orderItemr':orderItemr,}
     return render (request, 'order_status.html',context)
+
+
+
+def product_view(request,pk):
+    product = Product.objects.get(id=pk)
+    context = {'product':product}
+    return render (request, 'product_view.html', context)
+
+
+
+def product_add(request):
+    category = Category.objects.all()
+    img_uploader = ''
+    if request.method == 'POST' and 'upload' in request.POST:
+        data = request.POST
+        prod_name = 'prod_name' in data and data['prod_name']
+        prod_price = 'prod_price' in data and data['prod_price']
+        prod_img = 'prod_img' in request.FILES and request.FILES['prod_img']
+        description = 'description' in data and data['description']
+        if data ['category'] != 'none':
+            category= Category.objects.get(id=data['category'])
+        else:
+            category= None
+
+        img_uploader = Product.objects.create(name=prod_name,
+                                  image=prod_img,
+                                  price=prod_price,
+                                  category=category,
+                                  description=description
+                                 )
+        img_uploader.save()
+        messages.success(request, 'Your Product Uploaded Successfully !!')
+    context={'category':category,'prod':img_uploader}
+    return render (request,'product_add.html' , context)

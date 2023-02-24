@@ -1,0 +1,169 @@
+{% extends 'root.html' %} {% load static %} {% block content %}
+<style>
+    ul {
+      padding-left: 0rem;
+    }
+      .profile-pic-User {
+        max-width: 100%;
+        max-height: 200px;
+        margin:auto;
+        border-radius: 50px;
+      }
+    input[type="text"] {
+      width: 100%;
+      color: rgb(247, 243, 243);
+      background: transparent;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border-radius: 4px;
+      border: 2px black solid;
+      box-sizing: border-box;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: block;
+      background: transparent;
+      border: 2px black solid;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      width: 200px;
+      height: 200px;
+      padding: 12px 20px 30px 40px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      border: 2px black solid;
+      background: transparent;
+      display: block;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #2d4050;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .preview{
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height:auto;
+}
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      color: rgb(241, 239, 239);
+      background: transparent;
+      display: block;
+      border: 2px black solid;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    select{
+      background-color: #2d4050;
+      color: white;
+      width: 100%;
+      height: 50px;
+      border-radius: 4px;
+      margin-top: 9px;
+      align-items: center;
+      border: 2px black solid;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      background-color: #140303;
+      color: white;
+      display: flex;
+      flex-direction:column;
+      border-radius: 19px;
+      border: 16px black solid;
+      cursor: pointer;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      background-color: #2d4050;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #68da1c;
+      transition: all ease-in 0.5s;
+    }
+  </style>
+<div class="container">
+  {% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+<form method="POST"  enctype="multipart/form-data" action="" >{% csrf_token %}
+    <div class="preview">
+        <img id="file-ip-1-preview">
+      </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Name</label>
+        <input type="text" name="prod_name" class="form-control" id="formGroupExampleInput" placeholder="Enter Product name">
+        <label for="formGroupExampleInput" class="form-label">Prices</label>
+        <input type="number" name="prod_price" class="form-control" id="formGroupExampleInput" placeholder="Enter Product name">
+        <label for="formGroupExampleInput2" class="form-label">Select</label>
+        <select type="select" class="form-control"name = 'category' id="formGroupExampleInput2" placeholder="Another input placeholder">
+          <option value='none'></option>  
+          {% for categ in category %}
+            <option  value={{categ.id}} >{{categ.name}}</option>
+            {% endfor %}
+        </select>
+        <div class="preview">
+            <img id="file-ip-1-preview">
+          </div>
+        <input name="prod_img" 
+        class="form-control block w-full px-2 py-1.5 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+        id="formFileLg" type="file"  onchange="showPreview(event);"/>
+        <label for="formGroupExampleInput" class="form-label">Description</label>
+        <input type="text" name="description" class="form-control" id="formGroupExampleInput" placeholder="Enter Description">
+    </div>
+    <!-- {{p_form}} -->
+    <button name='upload' type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+<script>
+     
+        function showPreview(event){
+    if(event.target.files.length > 0){
+      var src = URL.createObjectURL(event.target.files[0]);
+      var preview = document.getElementById("file-ip-1-preview");
+      preview.src = src;
+      preview.style.display = "block";
+    }
+  }
+ 
+</script>
+{% endblock %}

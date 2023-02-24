@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 import os
 from pickle import TRUE
 from telnetlib import AUTHENTICATION
@@ -48,14 +49,35 @@ INSTALLED_APPS = [
     'sales',
     'api',
     'defender',
+    'corsheaders',
+    'simple_chatbot',
     'rest_framework',
     # 'django.contrib.sites',
     'allauth',
+    'sili',
+    # 'chatterbot.ext.django_chatterbot',
+    # 'chatterbot',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
 ]
+CHATTERBOT = {
+    'name': 'Tech Support Bot',
+    'logic_adapters': [
+        'chatterbot.logic.MathematicalEvaluation',
+        'chatterbot.logic.TimeLogicAdapter',
+        'chatterbot.logic.BestMatch'
+    ]
+}
+
+SIMPLE_CHATBOT = {
+    'responses': (
+        ("EcartProducts.responses.GreetingResponse", "Greeting"),
+        ("EcartProducts.responses.GoodbyeResponse", "Goodbye"),
+    ),
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,7 +89,18 @@ MIDDLEWARE = [
     # 'defender.middleware.FailedLoginMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'Ecart.urls'
 
