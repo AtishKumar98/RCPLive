@@ -133,11 +133,11 @@
         <label for="formGroupExampleInput" class="form-label">Name</label>
         <input type="text" name="prod_name" class="form-control" id="formGroupExampleInput" placeholder="Enter Product name">
         <label for="formGroupExampleInput" class="form-label">Prices</label>
-        <input type="number" name="prod_price" class="form-control" id="formGroupExampleInput" placeholder="Enter Product name">
+        <input type="number" name="prod_price" class="form-control" id="formGroupExampleInput" placeholder="Enter Product Price">
         <label for="formGroupExampleInput2" class="form-label">Select</label>
-        <select type="select" class="form-control"name = 'category' id="formGroupExampleInput2" placeholder="Another input placeholder">
-          <option value='none'></option>  
-          {% for categ in category %}
+        <select type="select" class="form-control" name = 'category' id="formGroupExampleInput2" placeholder="Another input placeholder">
+          <option value="">Select your option</option>
+          {% for categ in cat %}
             <option  value={{categ.id}} >{{categ.name}}</option>
             {% endfor %}
         </select>

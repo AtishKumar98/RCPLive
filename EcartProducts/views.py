@@ -441,7 +441,7 @@ def product_view(request,pk):
 
 
 def product_add(request):
-    category = Category.objects.all()
+    category_cat = Category.objects.all()
     img_uploader = ''
     if request.method == 'POST' and 'upload' in request.POST:
         data = request.POST
@@ -449,18 +449,19 @@ def product_add(request):
         prod_price = 'prod_price' in data and data['prod_price']
         prod_img = 'prod_img' in request.FILES and request.FILES['prod_img']
         description = 'description' in data and data['description']
-        if data ['category'] != 'none':
-            category= Category.objects.get(id=data['category'])
-        else:
-            category= None
+        category = 'category' in data and data['category']
 
-        img_uploader = Product.objects.create(name=prod_name,
+        print(data['category'], '$$$$$$$$$$')
+        if data ['category'] != '':
+            img_uploader = Product.objects.create(name=prod_name,
                                   image=prod_img,
                                   price=prod_price,
-                                  category=category,
+                                  category_id=data['category'],
                                   description=description
                                  )
-        img_uploader.save()
-        messages.success(request, 'Your Product Uploaded Successfully !!')
-    context={'category':category,'prod':img_uploader}
+            img_uploader.save()
+            messages.success(request, 'Your Product Uploaded Successfully !!')
+        else:
+           messages.error(request, 'Kindly Proper fill the details')
+    context={'cat':category_cat,'prod':img_uploader}
     return render (request,'product_add.html' , context)
