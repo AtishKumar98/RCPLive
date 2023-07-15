@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-jvdzxwzc!jpk#w$-7v_a29vtk1+mwd==e^)cj#qz$bb)#!$*@a
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://ecartatish.herokuapp.com']
+#CSRF_TRUSTED_ORIGINS = ['https://ecartatish.herokuapp.com']
 
 # Application definition
 
@@ -50,11 +50,11 @@ INSTALLED_APPS = [
     'api',
     'defender',
     'corsheaders',
-    'simple_chatbot',
+    #'simple_chatbot',
     'rest_framework',
     # 'django.contrib.sites',
     'allauth',
-    'sili',
+    #'sili',
     # 'chatterbot.ext.django_chatterbot',
     # 'chatterbot',
     'allauth.account',
@@ -62,22 +62,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
 ]
-CHATTERBOT = {
-    'name': 'Tech Support Bot',
-    'logic_adapters': [
-        'chatterbot.logic.MathematicalEvaluation',
-        'chatterbot.logic.TimeLogicAdapter',
-        'chatterbot.logic.BestMatch'
-    ]
-}
-
-SIMPLE_CHATBOT = {
-    'responses': (
-        ("EcartProducts.responses.GreetingResponse", "Greeting"),
-        ("EcartProducts.responses.GoodbyeResponse", "Goodbye"),
-    ),
-}
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
