@@ -5,26 +5,26 @@ from django.dispatch import receiver
 from .models import Profile
 from django.contrib.auth.models import Group
 
-def customer_profile(sender , instance, created , **kwargs):
-    if created:
-        group =Group.objects.get(name="Admin")
-        instance.groups.add(group)
-        Customer.objects.create(
-            user=instance,
-            firstname=instance.username,
-            )
+# def customer_profile(sender , instance, created , **kwargs):
+#     if created:
+#         group =Group.objects.get(name="Admin")
+#         instance.groups.add(group)
+#         Customer.objects.create(
+#             user=instance,
+#             firstname=instance.username,
+#             )
 
 
-post_save.connect(customer_profile,sender=User)
+# post_save.connect(customer_profile,sender=User)
 
 
 
-@receiver(post_save, sender=User)
-def create_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+# @receiver(post_save, sender=User)
+# def create_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
 
 
-@receiver(post_save, sender=User)
-def save_profile(sender, instance, **kwargs):
-    instance.profile.save()
+# @receiver(post_save, sender=User)
+# def save_profile(sender, instance, **kwargs):
+#     instance.profile.save()
