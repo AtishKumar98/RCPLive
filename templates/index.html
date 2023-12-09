@@ -10,16 +10,65 @@
   border-radius: 20px;
   overflow: hidden;
   /* margin: 10%; */
-  margin-top: 10px;
+  margin: 4%;
+  margin-left: 3%;
  
 }
 
+.catprod_card{
+  padding: 3%;
+  color: whitesmoke;
+  
+}
+.data_product {
+  padding: 3%;
+  color: white;
+}
+.buttons_for_prod{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+}
+.buttons_for_prod button {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(184, 174, 174, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+ padding: 3%;
+ color: white;
+  margin: 4%;
+  border-radius: 10px;
+
+}
+.card{
+  width: 100%;
+  margin: 4%;
+  z-index: 99;
+  padding: 0.1%;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+  /* background-color: aliceblue; */
+  min-height: 40vh;
+  border-radius: 15px;
+}
+.image_in_card{
+  display: flex;
+  height:20vh ;
+  justify-content: center;
+  align-items: center;
+}
+.image_in_card img{
+  border-radius: 15px;
+  width: 60%;
+}
 
 .grid_prod{
   display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             padding: auto;
+
             margin: auto;
+            column-gap: 20px;
+            padding: 4%;
 }
 .prd_card::before {
   content: "";
@@ -486,7 +535,9 @@ flex-direction: column;
     
        
 
-          <!-- {% for prods in prod %}
+          {% for prods in prod %}
+
+<!--           
             <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
               <a href ='{% url "product_view" prods.id %}' class="block relative h-48 rounded overflow-hidden">
                 
@@ -532,33 +583,39 @@ flex-direction: column;
           </form>
         </div>
       </div>
+    
       
-      
-      
-      {% endfor %} -->
-      
+       -->
+      {% endfor %}
+      <div class="grid_prod">
+      {% for prods in prod %}
+      <div class="card">
+        <div class="image_in_card">
+          <img src="{{prods.image.url}}" alt="{{prods.image}}">
+        </div>
+        <div class="catprod_card">
+          Category:{{prods.category}}
+        </div>
+        <div class="data_product">
+         <h2 style="color: whitesmoke;font-size: x-large;">iPhone 5</h2>
+         <h6>₹ 56000</h6>
+         <h6>Description</h6>
+        </div>
+        <div class="buttons_for_prod">
+          <button>Add to Card</button>
+          <button>Buy Now</button>
+        </div>
+      </div>
+
+      {% endfor %}
+      </div>
+
+
+
       <div class="grid_prod">
         
-        <!-- {% for prods in prod %}
-        <div class="prd_card">
-            <a href ='{% url "product_view" prods.id %}'>
-            
-            <div class="imgBox">
-              <img src="{{prods.image.url}}" alt="mouse corsair" class="mouse">
-            </div>
-        
-          <div class="contentBox">
-            <h3>{{prods.name}}</h3>
-            <h2 class="price">₹<small> {{prods.price}}</small></h2>
-            <button href="#" class="buy update-cart"data-action="add" data-product="{{prods.id}}" data-user="{{request.user}}" data-name="{{prods.name}}">Buy Now</button>
-          </div>
-          
-        </a>
-        </div>  
-        {% endfor %} -->
-
         {% for prods in prod %}
-        <!-- <div class="prod_card" style =''>
+        <!-- <div class="prd_card">
             <a href ='{% url "product_view" prods.id %}'>
             
             <div class="imgBox">
@@ -572,24 +629,13 @@ flex-direction: column;
           </div>
           
         </a>
-        </div> -->
-
+        </div>   -->
         {% endfor %}
 
        
-          {% for prods in prod %}
-          <div class="prod_card" style=" ">
-            <a href ='{% url "product_view" prods.id %}'>
-            <div class="prod_image" style="">
-              <img src="{{prods.image}}" >
-            </div>
-            <div class="btn_section" style = 'width:100%; display: flex;justify-content: space-around;align-items: center;margin-bottom: 5%;'>
-              <button class="btn_add_now update-cart" data-action="add" data-product="{{prods.id}}" data-user="{{request.user}}" data-name="{{prods.name}}" style="width:40%;background-image: linear-gradient(180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) );;border-radius: 15px;color: white; padding: 3%;">Add Now</button>
-              <button class="btn_buy_now" style="width:40%;background-image: linear-gradient(180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) );;border-radius: 15px;color: white; padding: 3%;">Buy Now</button>
-            </div>
-            </a>
-          </div>
-          {%  endfor  %}
+
+      
+
         
 
       </div>
