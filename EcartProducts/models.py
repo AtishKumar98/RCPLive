@@ -33,7 +33,7 @@ class Product(models.Model):
 
     def get_image(self):
         if self.image: 
-            return'http://192.168.0.180:8000'+ self.image.url
+            return self.image.url
         else:
             return ''
           
