@@ -1,7 +1,10 @@
 {% extends 'root.html' %} {% load static %} {% block content %}
 <!-- This example requires Tailwind CSS v2.0+ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <style>
-
+body{
+  background-color: black;
+}
 .prd_card {
   position: relative;
   width: 100%;
@@ -17,12 +20,12 @@
 
 .catprod_card{
   padding: 3%;
-  color: whitesmoke;
+  color: grey;
   
 }
 .data_product {
   padding: 3%;
-  color: white;
+  color: grey;
 }
 .buttons_for_prod{
   display: flex;
@@ -33,18 +36,61 @@
 }
 .buttons_for_prod button {
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(184, 174, 174, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
- padding: 3%;
+ padding: 2%;
+ width: 100%;
  color: white;
-  margin: 4%;
+  margin: 3%;
+  
   border-radius: 10px;
 
 }
+.card:hover{
+  transition: all ease-in-out  .4s;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+.additonal_text{
+  width: 20%;
+  height: 70vh;
+  background-color: rgb(89, 118, 170); 
+  display: flex;
+  font-size: xx-large;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.products_list{
+  width: 80%;
+  height: 70vh;
+}
+
+.swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 .card{
   width: 100%;
   margin: 4%;
+  background-color: #fff;
+  transition: .4s ease-in-out;
   z-index: 99;
-  padding: 0.1%;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  padding: 10%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   /* background-color: aliceblue; */
   min-height: 40vh;
@@ -205,8 +251,8 @@ width: 100%;
     overflow: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    
-    background-image: linear-gradient(-180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) );
+    color: black;
+    /* background-image: linear-gradient(-180deg,rgba(46, 86, 173, 0.4),rgba(17, 24, 39,0.3) ); */
     margin-bottom: 2vh;
     display: flex;
     flex-direction: row;
@@ -230,7 +276,7 @@ width: 100%;
 {
   font-size: small;
   margin: 10px;
-  color: white;
+  color: black;
 }
 
 .advertisement{
@@ -463,9 +509,9 @@ flex-direction: column;
   </div>
 </div>
 {% endfor %}
-<section class="home-section mt-4 bg-gray-900">
+<section class="home-section mt-4 ">
   <!-- <div class="text-gray-re">Dashboard</div> -->
-  <section class="text-green-400 bg-gray-900 body-font">
+  <section class="text-green-400 body-font">
     <!-- <div class="container px-2 mx-auto"> -->
       <div class="advertisement">
         <div class="sub_advertisment_1">
@@ -587,31 +633,103 @@ flex-direction: column;
       
        -->
       {% endfor %}
-      <div class="grid_prod">
+      <div class="pack_of_products" style="display: flex;flex-direction: row; width: 100%;background-color: rgb(152, 175, 218);height: 70vh;">
+        <div class="additonal_text"style="">
+<h1>
+  New Products
+</h1>
+<a href = '' style="font-size: x-large;color: rgb(223, 216, 216);">
+  VIEW ALL<i class='bx bx-right-arrow-alt' style="margin-top: 8%; font-size: smaller;"></i>
+</a>
+
+</div>
+<div class="products_list">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
       {% for prods in prod %}
-      <div class="card">
-        <div class="image_in_card">
-          <img src="{{prods.image.url}}" alt="{{prods.image}}">
-        </div>
-        <div class="catprod_card">
-          Category:{{prods.category}}
-        </div>
-        <div class="data_product">
-         <h2 style="color: whitesmoke;font-size: x-large;">iPhone 5</h2>
-         <h6>₹ 56000</h6>
-         <h6>Description</h6>
-        </div>
-        <div class="buttons_for_prod">
-          <button>Add to Card</button>
-          <button>Buy Now</button>
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="image_in_card">
+            <img src="{{prods.image.url}}" alt="{{prods.image}}">
+          </div>
+          <div class="catprod_card">
+            Category: {{prods.category}}
+          </div>
+          <div class="data_product">
+           <h2 style="color: grey;font-size: x-large;">iPhone 5</h2>
+           <h6>₹ 56000</h6>
+           <h6>Description</h6>
+          </div>
+          <div class=" buttons_for_prod">
+            <button><i class="bx bxs-cart-add m-1"></i> Add to Cart</button>
+            <form action = '{% url "like_products" %}' method ='POST'>
+              {% csrf_token %}
+              
+              <input type = 'hidden' name='prod_id' value ={{prods.id}}>
+              {% if user not in prods.liked.all %}
+              <button type ='submit'>
+                <i class='bx bx-heart m-1'></i>
+              </button>
+              {% else %}
+              <button type ='submit'> 
+                <i class='bx bxs-heart m-1' ></i>
+              </button>
+              {% endif %}
+              
+              
+              
+            </form>
+            <strong style="margin-left: 2%;">{{prods.liked.all.count}}</strong>
+          </div>
         </div>
       </div>
-
       {% endfor %}
-      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+</div>
 
 
+<div class="grid_prod">
+{% for prods in prod %}
+<div class="card">
+  <div class="image_in_card">
+    <img src="{{prods.image.url}}" alt="{{prods.image}}">
+  </div>
+  <div class="catprod_card">
+    Category: {{prods.category}}
+  </div>
+  <div class="data_product">
+   <h2 style="color: grey;font-size: x-large;">iPhone 5</h2>
+   <h6>₹ 56000</h6>
+   <h6>Description</h6>
+  </div>
+  <div class=" buttons_for_prod">
+    <button><i class="bx bxs-cart-add m-1"></i> Add to Cart</button>
+    <form action = '{% url "like_products" %}' method ='POST'>
+      {% csrf_token %}
+      
+      <input type = 'hidden' name='prod_id' value ={{prods.id}}>
+      {% if user not in prods.liked.all %}
+      <button type ='submit'>
+    <i class='bx bx-heart m-1'></i>
+    </button>
+    {% else %}
+    <button type ='submit'> 
+    <i class='bx bxs-heart m-1' ></i>
+  </button>
+      {% endif %}
+      
+      
+      
+    </form>
+    <strong style="margin-left: 2%;">{{prods.liked.all.count}}</strong>
+  </div>
+</div>
 
+{% endfor %}
+</div>
       <div class="grid_prod">
         
         {% for prods in prod %}
@@ -630,6 +748,27 @@ flex-direction: column;
           
         </a>
         </div>   -->
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+   var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      centeredSlides: true,
+      spaceBetween: 10,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
         {% endfor %}
 
        

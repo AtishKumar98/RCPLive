@@ -1,4 +1,4 @@
-/* Google Font Link */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
@@ -11,7 +11,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to bottom right, rgb(26, 146, 194), rgb(0, 67, 145));
+  background-image: linear-gradient(to bottom right, rgb(113, 150, 165), rgb(64, 136, 219));
   padding: 30px;
 }
 .container{

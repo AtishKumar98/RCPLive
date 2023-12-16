@@ -53,10 +53,10 @@
 
   
   div .diver {
-    border-radius: 5px;
-    margin: 10px;
+    width: 50%;
+    border-radius: 15px;
     background:linear-gradient(180deg, rgb(50, 114, 150),rgb(85, 132, 172),rgb(90, 140, 180),rgb(100, 150, 190));
-    padding: 20px;
+    padding: 6%;
     }
 
 
@@ -93,37 +93,38 @@
   }
 
   input[type="submit"]:hover {
-    background-color: #68da1c;
+    background-color: #b5c7a9;
     transition: all ease-in 0.5s;
   }
 
   
 .containerpro {
   max-width: 1920px;
-  margin-left: 6rem;
-  margin-right: 1rem;
 }
 
   
 
 </style>
-<div class = 'containerpro bg-dark text-white'>
-
-    <div class = 'diver' align ="center">
-        <h2>Welcome To RCP Chat</h2>
-    </div>
-    
-    <form id="post-form" method="POST" action="/checkview">
+<div class="full_container bg-dark" style="height: 100vh;width: 100%;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+  
+  <div class = 'diver' align ="center">
+    <h2>RCP ChatBox <i class='bx bx-message-dots' style="font-size: large;" ></i></h2>
+    <div class = 'containerpro'>
+      
+      
+      <form id="post-form" method="POST" action="/checkview">
         {% csrf_token %}
         <label>Room Name</label>
         <input type="text" name="room_name" id="room_name" width="100px" value = 'Administration' readonly />
         <label>Username</label>
         <input type="text" name="username" id="username" width="100px" value = '{{request.user.customer.firstname}}' readonly/>
         <input type="submit" value="Enter Room">
-    </form>
+      </form>
+      
+    </div>
     
+  </div>
 </div>
-
 {% endblock content%}
 
 

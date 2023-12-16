@@ -1,10 +1,14 @@
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Hi+Melody&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Hi+Melody&family=Manjari&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins" , sans-serif;
+  font-family: "Manjari" , sans-serif;
 }
 .sidebar-atish{
   position: fixed;
@@ -12,7 +16,7 @@
   top: 0;
   height: 100%;
   width: 78px;
-  background: #11101D;
+  background-image:linear-gradient(180deg,rgb(21, 68, 131),rgb(1, 14, 22));
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
@@ -31,8 +35,8 @@
   transition: all 0.5s ease;
 }
 .sidebar-atish .logo-details .logo_name{
-  color: #fff;
-  font-size: 20px;
+  color: rgb(123, 192, 233);
+  font-size: 22px;
   font-weight: 600;
   opacity: 0;
   transition: all 0.5s ease;
@@ -57,7 +61,7 @@
   text-align: right;
 }
 .sidebar-atish i{
-  color: #fff;
+  color: rgb(123, 192, 233);
   height: 60px;
   min-width: 50px;
   font-size: 28px;
@@ -112,27 +116,13 @@
   transition: all 0.5s ease;
   background: #1d1b31;
 }
+
+
 .sidebar-atish.open input{
   padding: 0 20px 0 50px;
   width: 100%;
 }
-.sidebar-atish .bx-search{
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  font-size: 22px;
-  background: #1d1b31;
-  color: #FFF;
-}
-.sidebar-atish.open .bx-search:hover{
-  background: #1d1b31;
-  color: #FFF;
-}
-.sidebar-atish .bx-search:hover{
-  background: #FFF;
-  color: #11101d;
-}
+
 .sidebar-atish li a{
   display: flex;
   height: 100%;
@@ -141,13 +131,13 @@
   align-items: center;
   text-decoration: none;
   transition: all 0.4s ease;
-  background: #11101D;
+  background:transparent;
 }
 .sidebar-atish li a:hover{
-  background: #FFF;
+  background-image:linear-gradient(180deg,rgb(133, 175, 228),rgb(221, 229, 235));
 }
 .sidebar-atish li a .links_name{
-  color: #fff;
+  color: rgb(123, 192, 233);
   font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
@@ -177,7 +167,7 @@
   left: 0;
   bottom: -8px;
   padding: 10px 14px;
-  background: #1d1b31;
+  background-image:linear-gradient(-180deg,rgb(18, 94, 194),rgb(4, 72, 117));
   transition: all 0.5s ease;
   overflow: hidden;
 }
@@ -211,7 +201,7 @@
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  background: #1d1b31;
+  background: #036d9e;
   width: 100%;
   height: 60px;
   line-height: 60px;
